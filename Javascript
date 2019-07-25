@@ -1,0 +1,296 @@
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+// Made with Zdog
+
+var sceneSize = 270;
+var TAU = Zdog.TAU;
+var initialRotate = new Zdog.Vector({ x: -50, y: -45 }).multiply( TAU/360 );
+
+var illo = new Zdog.Illustration({
+  element: '.illo',
+  rotate: initialRotate,
+  dragRotate: true,
+  resize: 'fullscreen',
+  onDragStart: function() {
+    isSpinning = false;
+  },
+  onResize: function( width, height ) {
+    this.zoom = Math.floor( Math.min( width, height ) / sceneSize * 0.7 ) / 3;
+  },
+});
+
+// ----- model ----- //
+
+var bird = new Zdog.Anchor({
+  addTo: illo,
+  translate: { z: -20 },
+});
+
+var letterGroup = new Zdog.Group({
+  addTo: bird,
+});
+
+// P
+new Zdog.Shape({
+  addTo: letterGroup,
+  path: [
+    { x: -275, y: -35 },
+    { x: -275, y: -175 },
+    { x: -245, y: -175 },
+    { arc: [
+      { x:  -195, y: -175 }, // corner
+      { x:  -195, y: -140 }, // end point
+    ]},
+    { arc: [ // start next arc from last end point
+      { x:  -195, y:  -105 }, // corner
+      { x:  -245, y:  -105 }, // end point
+    ]},
+    { x: -245, y: -105 },
+    { x:  -275, y:  -105 },
+  ],
+  rotate: { x: TAU/getRandomArbitrary(3, 5) },
+  color: '#F25F5C',
+  stroke: 10,
+  fill: false,
+});
+
+// E
+new Zdog.Shape({
+  addTo: letterGroup,
+  path: [
+    { x: -155, y: -35 },
+    { x: -155, y: -175 },
+    { x: -85, y: -175 },
+    { x: -155, y: -175 },
+    { x: -155, y: -105 },
+    { x: -85, y: -105 },
+    { x: -155, y: -105 },
+    { x: -155, y: -35 },
+    { x: -85, y: -35 },
+  ],
+  rotate: { x: TAU/getRandomArbitrary(3, 5) },
+  color: '#F25F5C',
+  stroke: 10,
+  fill: false,
+});
+
+// T
+new Zdog.Shape({
+  addTo: letterGroup,
+  path: [
+    { x: 0, y: -175 },
+    { x: -45, y: -175 },
+    { x: 45, y: -175 },
+    { x: 0, y: -175 },
+    { x: 0, y: -35 },
+  ],
+  rotate: { x: TAU/getRandomArbitrary(3, 5) },
+  color: '#F25F5C',
+  stroke: 10,
+  fill: false,
+});
+
+// E
+new Zdog.Shape({
+  addTo: letterGroup,
+  path: [
+    { x: 85, y: -35 },
+    { x: 85, y: -175 },
+    { x: 155, y: -175 },
+    { x: 85, y: -175 },
+    { x: 85, y: -105 },
+    { x: 155, y: -105 },
+    { x: 85, y: -105 },
+    { x: 85, y: -35 },
+    { x: 155, y: -35 },
+  ],
+  rotate: { x: TAU/getRandomArbitrary(3, 5) },
+  color: '#F25F5C',
+  stroke: 10,
+  fill: false,
+});
+
+// R
+new Zdog.Shape({
+  addTo: letterGroup,
+  path: [
+    { x: 195, y: -35 },
+    { x: 195, y: -175 },
+    { x: 225, y: -175 },
+    { arc: [
+      { x:  275, y: -175 }, // corner
+      { x:  275, y: -140 }, // end point
+    ]},
+    { arc: [ // start next arc from last end point
+      { x:  275, y:  -105 }, // corner
+      { x:  225, y:  -105 }, // end point
+    ]},
+    { x: 225, y: -105 },
+    { x:  195, y:  -105 },
+    { x: 225, y: -105 },
+    { x: 275, y: -35 },
+    { x: 225, y: -105 },
+    { x:  195, y:  -105 },
+  ],
+  rotate: { x: TAU/getRandomArbitrary(3, 5) },
+  color: '#F25F5C',
+  stroke: 10,
+  fill: false,
+});
+
+// F
+new Zdog.Shape({
+  addTo: letterGroup,
+  path: [
+    { x: -275, y: +175 },
+    { x: -275, y: 35 },
+    { x: -205, y: 35 },
+    { x: -275, y: 35 },
+    { x: -275, y: 105 },
+    { x: -205, y: 105 },
+    { x: -275, y: 105 },
+  ],
+  rotate: { x: TAU/getRandomArbitrary(3, 5) },
+  color: '#F25F5C',
+  stroke: 10,
+  fill: false,
+});
+
+// R
+new Zdog.Shape({
+  addTo: letterGroup,
+  path: [
+    { x: -155, y: 175 },
+    { x: -155, y: 35 },
+    { x: -125, y: 35 },
+    { arc: [
+      { x:  -75, y: 35 }, // corner
+      { x:  -75, y: 70 }, // end point
+    ]},
+    { arc: [ // start next arc from last end point
+      { x:  -75, y:  105 }, // corner
+      { x:  -125, y:  105 }, // end point
+    ]},
+    { x: -125, y: 105 },
+    { x:  -155, y:  105 },
+    { x: -125, y: 105 },
+    { x: -75, y: 175 },
+    { x: -125, y: 105 },
+    { x:  -155, y:  105 },
+  ],
+  rotate: { x: TAU/getRandomArbitrary(3, 5) },
+  color: '#F25F5C',
+  stroke: 10,
+  fill: false,
+});
+
+// E
+new Zdog.Shape({
+  addTo: letterGroup,
+  path: [
+    { x: -35, y: 175 },
+    { x: -35, y: 35 },
+    { x: 35, y: 35 },
+    { x: -35, y: 35 },
+    { x: -35, y: 105 },
+    { x: 35, y: 105 },
+    { x: -35, y: 105 },
+    { x: -35, y: 175 },
+    { x: 35, y: 175 },
+  ],
+  rotate: { x: TAU/getRandomArbitrary(3, 5) },
+  color: '#F25F5C',
+  stroke: 10,
+  fill: false,
+});
+
+// E
+new Zdog.Shape({
+  addTo: letterGroup,
+  path: [
+    { x: 85, y: 175 },
+    { x: 85, y: 35 },
+    { x: 155, y: 35 },
+    { x: 85, y: 35 },
+    { x: 85, y: 105 },
+    { x: 155, y: 105 },
+    { x: 85, y: 105 },
+    { x: 85, y: 175 },
+    { x: 155, y: 175 },
+  ],
+  rotate: { x: TAU/getRandomArbitrary(3, 5) },
+  color: '#F25F5C',
+  stroke: 10,
+  fill: false,
+});
+
+// B
+new Zdog.Shape({
+  addTo: letterGroup,
+  path: [
+    { x: 195, y: 175 },
+    { x: 195, y: 35 },
+    { x: 225, y: 35 },
+    { arc: [
+      { x:  275, y: 35 }, // corner
+      { x:  275, y: 70 }, // end point
+    ]},
+    { arc: [ // start next arc from last end point
+      { x:  275, y:  105 }, // corner
+      { x:  225, y:  105 }, // end point
+    ]},
+    { x: 225, y: 105 },
+    { x: 195, y:  105 },
+    { x: 225, y: 105 },
+    { arc: [
+      { x:  275, y: 105 }, // corner
+      { x:  275, y: 140 },
+    ]},
+    { arc: [
+      { x:  275, y: 175 }, // corner
+      { x:  225, y: 175 },
+    ]},
+    { x: 195, y: 175 },
+  ],
+  rotate: { x: TAU/getRandomArbitrary(3, 5) },
+  color: '#F25F5C',
+  stroke: 10,
+  fill: false,
+});
+
+// Y
+new Zdog.Shape({
+  addTo: letterGroup,
+  path: [
+    { x: 315, y: 35 },
+    { x: 360, y: 105 },
+    { x: 405, y: 35 },
+    { x: 360, y: 105 },
+    { x: 360, y: 175 },
+    { x: 360, y: 105 },
+  ],
+  rotate: { x: TAU/getRandomArbitrary(3, 5) },
+  color: '#F25F5C',
+  stroke: 10,
+  fill: false,
+});
+
+// screen blend letters
+letterGroup.render = function( ctx ) {
+  ctx.globalCompositeOperation = 'screen';
+  Zdog.Group.prototype.render.apply( this, arguments );
+};
+
+// ----- animate ----- //
+
+function animate() {
+  illo.updateRenderGraph();
+  requestAnimationFrame( animate );
+}
+
+animate();
+
+
+
